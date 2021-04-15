@@ -163,6 +163,28 @@ mode "resize" {
 
 bindsym $mod+r mode "resize"
 
+mode "mouse" {
+    # set speeds
+    set $slow 100
+    set $fast 500
+
+    # Mouse movement (slow/fine-tuned) -- vim keybindings
+    bindsym h exec xdotool mousemove_relative -- -$slow 0
+    bindsym j exec xdotool mousemove_relative 0 $slow
+    bindsym k exec xdotool mousemove_relative -- 0 -$slow
+    bindsym l exec xdotool mousemove_relative $slow 0
+
+    # Mouse movement (fast) -- vim keybindings
+    bindsym $mod+h exec xdotool mousemove_relative -- -$fast 0
+    bindsym $mod+j exec xdotool mousemove_relative 0 $fast
+    bindsym $mod+k exec xdotool mousemove_relative -- 0 -$fast
+    bindsym $mod+l exec xdotool mousemove_relative $fast 0
+
+    bindsym Escape mode "default"
+}
+
+bindsym $mod+m mode "mouse"
+
 # # Start i3bar to display a workspace bar (plus the system information i3status
 # # finds out, if available)
 # bar {
